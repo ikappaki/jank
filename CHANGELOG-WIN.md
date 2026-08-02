@@ -16,6 +16,7 @@ Binaries: [jank-win-release](https://github.com/ikappaki/jank-win-release)
 - Fix `(char N)` truncating Unicode code points above U+FFFF on Windows (`wchar_t` → `char32_t`/`c32rtomb`/`mbrtoc32`)
 - Fix `_WIN32` preprocessor check in `pass-widen-to-long` test
 - Add `JANK_CLJ_TEST_FILTER` env var for running individual clojure-test-suite tests
+- Remove `-DGC_NO_THREAD_REDIRECTS` (superseded by upstream [#846](https://github.com/jank-lang/jank/pull/846)/[#888](https://github.com/jank-lang/jank/pull/888))
 
 ## 2026-06-19 (56b77d7e9)
 
