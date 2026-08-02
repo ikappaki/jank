@@ -5,7 +5,11 @@ See [README.md](README.md) for context.
 
 Binaries: [jank-win-release](https://github.com/ikappaki/jank-win-release)
 
-## Untagged
+## 2026-07-28 (6a74b3c82)
+
+**Synced with:** jank-lang/jank @ [`6a74b3c82`](https://github.com/jank-lang/jank/commit/6a74b3c82ab11212170f14c06f3b1471ef2596ba)
+**Changeset:** [main-jank.26-07-28-6a74b3c82...main-win.26-07-28-6a74b3c82](https://github.com/ikappaki/jank-win/compare/main-jank.26-07-28-6a74b3c82...main-win.26-07-28-6a74b3c82)
+**Highlight:** Upgrade to LLVM 23 with SEH JITLink, fix char/integer bugs
 
 - Upgrade LLVM from 22 to 23 with SEH JITLink support (`ikappaki/llvm-project@jitlink-coff-seh-llvm-23`)
 - Fix `long_long_type()` returning `"long"` instead of `"long long"` (copy-paste bug in overload resolution)
