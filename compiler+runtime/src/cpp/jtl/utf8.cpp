@@ -175,9 +175,14 @@ namespace jtl
     }
 
     std::mbstate_t state{};
-    char32_t const wc{ static_cast<char32_t>(ch) };
     std::string str(MB_CUR_MAX, '\0');
-    auto const len { std::c32rtomb(str.data(), wc, &state) };
+#ifdef JANK_WINDOWS_LIKE
+    char32_t const wc{ static_cast<char32_t>(ch) };
+    auto const len{ std::c32rtomb(str.data(), wc, &state) };
+#else
+    wchar_t const wc{ static_cast<wchar_t>(ch) };
+    auto const len{ std::wcrtomb(str.data(), wc, &state) };
+#endif
 
     if(std::cmp_equal(len, static_cast<size_t>(-1)))
     {

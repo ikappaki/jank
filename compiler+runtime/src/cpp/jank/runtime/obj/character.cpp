@@ -104,8 +104,13 @@ namespace jank::runtime::obj
   i64 character::to_integer() const
   {
     std::mbstate_t state{};
+#ifdef JANK_WINDOWS_LIKE
     char32_t wc{};
     std::mbrtoc32(&wc, data.c_str(), data.size(), &state);
+#else
+    wchar_t wc{};
+    std::mbrtowc(&wc, data.c_str(), data.size(), &state);
+#endif
     return static_cast<i64>(wc);
   }
 }
