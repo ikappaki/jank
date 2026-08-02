@@ -1,4 +1,4 @@
-#include <cwchar>
+#include <cuchar>
 #include <utility>
 
 #include <jtl/utf8.hpp>
@@ -169,15 +169,15 @@ namespace jtl
 
   jtl::immutable_string to_char(i64 const ch)
   {
-    if(ch > 0x10FFFF)
+    if(ch < 0x0 || ch > 0x10FFFF)
     {
       throw std::runtime_error{ jank::util::format("Value out of range for char: {}", ch) };
     }
 
     std::mbstate_t state{};
-    wchar_t const wc{ static_cast<wchar_t>(ch) };
+    char32_t const wc{ static_cast<char32_t>(ch) };
     std::string str(MB_CUR_MAX, '\0');
-    auto const len{ std::wcrtomb(str.data(), wc, &state) };
+    auto const len { std::c32rtomb(str.data(), wc, &state) };
 
     if(std::cmp_equal(len, static_cast<size_t>(-1)))
     {

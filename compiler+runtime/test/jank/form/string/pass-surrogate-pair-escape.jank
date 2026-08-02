@@ -1,0 +1,6 @@
+; Surrogate pair \uD800\uDD67 should decode to U+10167 (𐅧).
+; This exercises the fallback to_char overload with a supplementary plane character.
+; On Windows with wchar_t (16-bit), this would truncate and produce "?" instead.
+(if (= "𐅧" "\uD800\uDD67")
+  :success
+  (throw "Surrogate pair \\uD800\\uDD67 did not decode to U+10167"))

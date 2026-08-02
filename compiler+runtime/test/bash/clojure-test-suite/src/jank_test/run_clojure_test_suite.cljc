@@ -1,5 +1,6 @@
 (ns jank-test.run-clojure-test-suite
-  (:require [clojure.test :as t]))
+  (:require [clojure.test :as t]
+            [clojure.string :as str]))
 
 (def namespaces
   '[
@@ -240,10 +241,21 @@
     clojure.string-test.upper-case
   ])
 
-(defn -main []
-  (when (seq namespaces)
-    (apply require namespaces)
-    ;; TODO (t/run-all-tests) => Exception: "TODO: port all-ns"
-    (when-not (t/successful? (apply t/run-tests namespaces))
-      (cpp/exit 1)))
+(defn -main [& args]
+  (let [filter-str (cpp/getenv "JANK_CLJ_TEST_FILTER")
+        has-filter (and (cpp/cast cpp/bool filter-str)
+                       (pos? (count (str filter-str))))
+        ns-to-run (if has-filter
+                    (let [fstr (str/join "" [(cpp/cast jtl.immutable_string filter-str)])
+                          filters (set (str/split fstr #","))]
+                      (filter (fn [ns-sym]
+                                (some (fn [f] (str/includes? (clojure.core/str ns-sym) f))
+                                      filters))
+                              namespaces))
+                    namespaces)]
+    (when (seq ns-to-run)
+      (apply require ns-to-run)
+      ;; TODO (t/run-all-tests) => Exception: "TODO: port all-ns"
+      (when-not (t/successful? (apply t/run-tests ns-to-run))
+        (cpp/exit 1))))
   (println :clojure-test-suite-successful))

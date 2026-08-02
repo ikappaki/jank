@@ -35,6 +35,8 @@ namespace jtl
     immutable_string data;
   };
 
+  /* Converts the code point CH to its string representation.
+     Throws if CH is not a valid code point. */
   jtl::immutable_string to_char(i64 const ch);
   jtl::immutable_string to_char(i64 const ch, jtl::immutable_string const &fallback);
   bool is_surrogate_high(u16 const high);

@@ -13,9 +13,9 @@ set -euo pipefail
 # --- Configuration, edit as needed.
 
 # LLVM repo to clone.
-llvm_url="https://github.com/jank-lang/llvm-project.git"
-llvm_branch="jank-snapshot/llvm23"
-llvm_commit="106644f6c835f9d2137aeb9cbfe1b9a60d03d17f"
+llvm_url="https://github.com/ikappaki/llvm-project.git"
+llvm_branch="jitlink-coff-seh-llvm-23"
+llvm_commit="16dd68d9b33c745be0156023b2e796c069128f77"
 
 # Patched version of the MSYS2-package mingw-w64-llvm used to build
 # LLVM from source. Tracks the MSYS2-packages mingw-w64-llvm package.

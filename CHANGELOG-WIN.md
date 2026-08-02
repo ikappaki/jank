@@ -5,6 +5,14 @@ See [README.md](README.md) for context.
 
 Binaries: [jank-win-release](https://github.com/ikappaki/jank-win-release)
 
+## Untagged
+
+- Upgrade LLVM from 22 to 23 with SEH JITLink support (`ikappaki/llvm-project@jitlink-coff-seh-llvm-23`)
+- Fix `long_long_type()` returning `"long"` instead of `"long long"` (copy-paste bug in overload resolution)
+- Fix `(char N)` truncating Unicode code points above U+FFFF on Windows (`wchar_t` → `char32_t`/`c32rtomb`/`mbrtoc32`)
+- Fix `_WIN32` preprocessor check in `pass-widen-to-long` test
+- Add `JANK_CLJ_TEST_FILTER` env var for running individual clojure-test-suite tests
+
 ## 2026-06-19 (56b77d7e9)
 
 **Synced with:** jank-lang/jank @ [`56b77d7e9`](https://github.com/jank-lang/jank/commit/56b77d7e9c555cfc59528124d199dbb54967b2c5)
