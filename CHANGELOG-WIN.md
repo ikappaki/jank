@@ -17,6 +17,7 @@ Binaries: [jank-win-release](https://github.com/ikappaki/jank-win-release)
 - Fix `_WIN32` preprocessor check in `pass-widen-to-long` test
 - Add `JANK_CLJ_TEST_FILTER` env var for running individual clojure-test-suite tests
 - Remove `-DGC_NO_THREAD_REDIRECTS` (superseded by upstream [#846](https://github.com/jank-lang/jank/pull/846)/[#888](https://github.com/jank-lang/jank/pull/888))
+- Fix nREPL test hang due to TCP stream framing assumption
 
 ## 2026-06-19 (56b77d7e9)
 
