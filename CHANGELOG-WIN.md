@@ -9,6 +9,7 @@ Binaries: [jank-win-release](https://github.com/ikappaki/jank-win-release)
 
 **Synced with:** jank-lang/jank @ [`6a74b3c82`](https://github.com/jank-lang/jank/commit/6a74b3c82ab11212170f14c06f3b1471ef2596ba)
 **Changeset:** [main-jank.26-07-28-6a74b3c82...main-win.26-07-28-6a74b3c82](https://github.com/ikappaki/jank-win/compare/main-jank.26-07-28-6a74b3c82...main-win.26-07-28-6a74b3c82)
+**LLVM SEH changeset:** [jank-snapshot/llvm23...jitlink-coff-seh-llvm-23](https://github.com/jank-lang/llvm-project/compare/106644f6c835f9d2137aeb9cbfe1b9a60d03d17f...ikappaki:llvm-project:16dd68d9b33c745be0156023b2e796c069128f77)
 **Highlight:** Upgrade to LLVM 23 with SEH JITLink, fix char/integer bugs
 
 - Upgrade LLVM from 22 to 23 with SEH JITLink support (`ikappaki/llvm-project@jitlink-coff-seh-llvm-23`)
